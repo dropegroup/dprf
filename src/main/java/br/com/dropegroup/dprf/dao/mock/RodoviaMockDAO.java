@@ -7,10 +7,7 @@ package br.com.dropegroup.dprf.dao.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
-import br.com.dropegroup.dprf.dao.RodoviaDAO;
-import br.com.dropegroup.dprf.entity2.Rodovia;
+import br.nom.dropegroup.dprf.entity.Rodovia;
 
 /**
  * 

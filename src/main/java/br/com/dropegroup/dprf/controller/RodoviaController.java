@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.dropegroup.dprf.component.RodoviaComponent;
-import br.com.dropegroup.dprf.entity2.Rodovia;
+import br.nom.dropegroup.dprf.entity.Rodovia;
 
 /**
  *

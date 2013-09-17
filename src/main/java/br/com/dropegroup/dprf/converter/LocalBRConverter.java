@@ -3,7 +3,7 @@ package br.com.dropegroup.dprf.converter;
 import org.springframework.stereotype.Component;
 
 import br.com.dropegroup.dprf.entity.LocalBR;
-import br.com.dropegroup.dprf.entity2.Rodovia;
+import br.nom.dropegroup.dprf.entity.Rodovia;
 
 @Component
 public class LocalBRConverter {
