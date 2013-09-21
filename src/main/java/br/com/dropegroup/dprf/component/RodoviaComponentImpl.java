@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.dropegroup.dprf.dao.RodoviaDAO;
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.Rodovia;
 
 /**
  *

@@ -3,7 +3,7 @@ package br.com.dropegroup.dprf.component;
 
 import java.util.Collection;
 
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.Rodovia;
 
 /**
  *

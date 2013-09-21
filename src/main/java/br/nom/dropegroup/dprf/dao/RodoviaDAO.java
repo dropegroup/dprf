@@ -4,7 +4,8 @@
  */
 package br.nom.dropegroup.dprf.dao;
 
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.Rodovia;
+
 import java.util.List;
 
 /**

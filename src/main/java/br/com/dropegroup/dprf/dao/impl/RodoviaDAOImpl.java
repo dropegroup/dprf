@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import br.com.dropegroup.dprf.converter.LocalBRConverter;
 import br.com.dropegroup.dprf.dao.RodoviaDAO;
 import br.com.dropegroup.dprf.entity.LocalBR;
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.Rodovia;
 
 @Repository
 public class RodoviaDAOImpl implements RodoviaDAO {

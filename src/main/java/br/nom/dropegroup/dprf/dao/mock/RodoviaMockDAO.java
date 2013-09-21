@@ -4,10 +4,12 @@
  */
 package br.nom.dropegroup.dprf.dao.mock;
 
+import br.com.dropegroup.dprf.resource.Rodovia;
 import br.nom.dropegroup.dprf.dao.RodoviaDAO;
-import br.nom.dropegroup.dprf.entity.Rodovia;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 /**
