@@ -1,7 +1,6 @@
 package br.com.dropegroup.dprf.dao.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -27,7 +26,7 @@ public class RodoviaDAOImpl implements RodoviaDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Collection<Rodovia> findAll() {
+	public List<Rodovia> findAll() {
 		Query query = entityManager.createQuery("select p from LocalBR p");
 		ArrayList<Rodovia> rodovias = new ArrayList<Rodovia>();
 		for (LocalBR localBR : (List<LocalBR>) query.getResultList()) {

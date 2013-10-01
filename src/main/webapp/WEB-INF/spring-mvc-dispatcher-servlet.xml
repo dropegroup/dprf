@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -19,12 +19,28 @@
     
     <mvc:annotation-driven />
 
-
+<!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://localhost/dprf"
         p:username="root" p:password="" p:initialSize="5" p:maxActive="10">
     </bean>
+ 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+    	<property name="driverClassName" value="org.h2.Driver" />
+    	<property name="url" value="jdbc:h2:mem:" />
+    	<property name="username" value="sa" />
+    	<property name="password" value="" />
+	</bean>
+  -->
+  
+  
  
+ 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+    	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    	<property name="url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_a5309f5333bbaa2" />
+    	<property name="username" value="ba8837d2a11342" />
+    	<property name="password" value="5addb427" />
+	</bean>
+
     <bean
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
         id="entityManagerFactory">
