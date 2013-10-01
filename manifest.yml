@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: dprf-server-dropegroup
+    framework:
+      name: spring
+      info:
+        mem: 512M
+        description: Java SpringSource Spring Application
+        exec: 
+    infra: aws
+    url: ${name}.${target-base}
+    mem: 1G
+    instances: 1
+    services:
+      mysql-4e326:
+        type: mysql
