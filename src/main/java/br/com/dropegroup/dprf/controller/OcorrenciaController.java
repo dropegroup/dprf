@@ -7,10 +7,7 @@
 package br.com.dropegroup.dprf.controller;
 
 import br.com.dropegroup.dprf.component.OcorrenciaComponent;
-import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
