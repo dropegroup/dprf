@@ -14,74 +14,151 @@ public class LocalBR implements Serializable {
 
 	@Id
 	@Column(name = "lbrid")
-	private Integer lbrid;
+	private Integer id;
 
+	/**
+	 * Identifica a UF da ocorrência.
+	 */
 	@Column(name = "lbruf", length = 2)
-	private String lbruf;
+	private String uf;
 
+	/**
+	 * Identifica a BR da Ocorrencia
+	 */
 	@Column(name = "lbrbr", length = 3)
-	private String lbrbr;
+	private String br;
 
+	/**
+	 * Identifica o Km da ocorrência
+	 */
 	@Column(name = "lbrkm", length = 5)
-	private String lbrkm;
+	private String km;
 
+	/**
+	 * Identifica a Latitude da ocorrência
+	 */
 	@Column(name = "lbrlatitude", length = 20)
-	private String lbrlatitude;
+	private String latitude;
 
+	/**
+	 * Identifica a Longitude da ocorrência
+	 */
 	@Column(name = "lbrlongitude", length = 20)
-	private String lbrlongitude;
+	private String longitude;
 
 	@Column(name = "lbrpnvid")
 	private Integer lbrpnvid;
 
+	/**
+	 * Atualização do Local da ocorrência
+	 */
 	@Column(name = "lbratualiza", length = 1)
-	private String lbratualiza;
+	private String atualizacao;
 
-	public Integer getLbrid() {
-		return lbrid;
+	public Integer getId() {
+		return id;
 	}
 
-	public String getLbruf() {
-		return lbruf;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getLbrbr() {
-		return lbrbr;
+	public String getUf() {
+		return uf;
 	}
 
-	public String getLbrkm() {
-		return lbrkm;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
-	public String getLbrlatitude() {
-		return lbrlatitude;
+	public String getBr() {
+		return br;
 	}
 
-	public String getLbrlongitude() {
-		return lbrlongitude;
+	public void setBr(String br) {
+		this.br = br;
+	}
+
+	public String getKm() {
+		return km;
+	}
+
+	public void setKm(String km) {
+		this.km = km;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 
 	public Integer getLbrpnvid() {
 		return lbrpnvid;
 	}
 
-	public String getLbratualiza() {
-		return lbratualiza;
+	public void setLbrpnvid(Integer lbrpnvid) {
+		this.lbrpnvid = lbrpnvid;
+	}
+
+	public String getAtualizacao() {
+		return atualizacao;
+	}
+
+	public void setAtualizacao(String atualizacao) {
+		this.atualizacao = atualizacao;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		LocalBR other = (LocalBR) obj;
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("LocalBR [");
-		sb.append("lbrid=").append(lbrid);
-		sb.append(", lbruf=").append(lbruf);
-		sb.append(", lbrbr=").append(lbrbr);
-		sb.append(", lbrkm=").append(lbrkm);
-		sb.append(", lbrlatitude=").append(lbrlatitude);
-		sb.append(", lbrlongitude=").append(lbrlongitude);
+		sb.append("id=").append(id);
+		sb.append(", uf=").append(uf);
+		sb.append(", br=").append(br);
+		sb.append(", km=").append(km);
+		sb.append(", latitude=").append(latitude);
+		sb.append(", longitude=").append(longitude);
 		sb.append(", lbrpnvid=").append(lbrpnvid);
-		sb.append(", lbratualiza=").append(lbratualiza);
+		sb.append(", atualizacao=").append(atualizacao);
 		return sb.toString();
 	}
 
-	
 }

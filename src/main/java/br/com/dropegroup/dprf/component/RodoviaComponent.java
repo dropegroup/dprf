@@ -1,15 +1,19 @@
-
 package br.com.dropegroup.dprf.component;
 
 import java.util.Collection;
+import java.util.List;
 
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
+import br.com.dropegroup.dprf.resource.Rodovia;
 
-/**
- *
- * @author dailton.almeida
- */
 public interface RodoviaComponent {
+
     Collection<Rodovia> findAll();
+
     Rodovia findByCode(String code);
+
+    List<OcorrenciaAgrupamentoVO> ranking();
+
+    List<OcorrenciaAgrupamentoVO> ranking(Integer ano);
+
 }

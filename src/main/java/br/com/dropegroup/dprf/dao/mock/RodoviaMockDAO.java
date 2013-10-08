@@ -7,7 +7,7 @@ package br.com.dropegroup.dprf.dao.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.nom.dropegroup.dprf.entity.Rodovia;
+import br.com.dropegroup.dprf.resource.Rodovia;
 
 /**
  * 

@@ -4,9 +4,11 @@
  */
 package br.nom.dropegroup.dprf.controller;
 
+import br.com.dropegroup.dprf.resource.Rodovia;
 import br.nom.dropegroup.dprf.component.RodoviaComponent;
-import br.nom.dropegroup.dprf.entity.Rodovia;
+
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
