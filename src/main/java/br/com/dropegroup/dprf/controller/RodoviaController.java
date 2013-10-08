@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.dropegroup.dprf.component.RodoviaComponent;
-import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 import br.com.dropegroup.dprf.resource.Rodovia;
 
 @Service

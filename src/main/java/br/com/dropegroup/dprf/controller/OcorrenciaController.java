@@ -10,6 +10,8 @@ import br.com.dropegroup.dprf.component.OcorrenciaComponent;
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class OcorrenciaController {
     @Autowired
+    private ControllerUtils controllerUtils;
+    @Autowired
     private OcorrenciaComponent ocorrenciaComponent;
 
     /**
@@ -33,8 +37,12 @@ public class OcorrenciaController {
      */
     @RequestMapping(value = "/ocorrencias/ranking", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingOcorrenciasAsJSON() {
-        return ocorrenciaComponent.buscaRankingRodovia();
+    public ResponseEntity getRankingOcorrenciasAsJSON() {
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia());
+        } catch (Exception e) {
+            return controllerUtils.toResponseEntity(e);
+        }
     }
 
     /**
@@ -45,8 +53,12 @@ public class OcorrenciaController {
      */
     @RequestMapping(value = "/ocorrencias/ranking/{ano}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasAnoAsJSON(@PathVariable Integer ano) {
-        return ocorrenciaComponent.buscaRankingRodovia(ano);
+    public ResponseEntity getRankingRodoviasAnoAsJSON(@PathVariable Integer ano) {
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(ano));
+        } catch (Exception e) {
+            return controllerUtils.toResponseEntity(e);
+        }
     }
 
     /**
@@ -57,10 +69,14 @@ public class OcorrenciaController {
      */
     @RequestMapping(value = "/ocorrencias/ranking/{ano}/{mes}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasAnoAsJSON(
+    public ResponseEntity getRankingRodoviasAnoAsJSON(
             @PathVariable(value="ano") Integer ano,
             @PathVariable(value="mes") Integer mes) {
-        return ocorrenciaComponent.buscaRankingRodovia(ano, mes);
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(ano, mes));
+        } catch (Exception e) {
+            return controllerUtils.toResponseEntity(e);
+        }
     }
 
     /**
@@ -71,9 +87,13 @@ public class OcorrenciaController {
      */
     @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasEstadoRodoviaAsJSON(
+    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(
             @PathVariable(value="estado") String estado) {
-        return ocorrenciaComponent.buscaRankingRodovia(estado);
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(estado));
+        } catch (Exception e) {
+            return controllerUtils.toResponseEntity(e);
+        }
     }
     
     /**
@@ -84,10 +104,14 @@ public class OcorrenciaController {
      */
     @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}/{rodovia}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasEstadoRodoviaAsJSON(
+    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(
             @PathVariable(value="estado") String estado,
             @PathVariable(value="rodovia") String rodovia) {
-        return ocorrenciaComponent.buscaRankingRodovia(estado, rodovia);
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(estado, rodovia));
+        } catch (Exception e) {
+            return controllerUtils.toResponseEntity(e);
+        }
     }
     
 }
