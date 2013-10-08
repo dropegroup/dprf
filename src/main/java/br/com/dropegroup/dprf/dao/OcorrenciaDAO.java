@@ -5,20 +5,24 @@ import java.util.List;
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 
 public interface OcorrenciaDAO {
-
     /**
-     * Retorna quantidade de ocorrencias agrupada por rodovias.
+     * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes.
      */
     List<OcorrenciaAgrupamentoVO> find();
-
     /**
-     * Retorna quantidade de ocorrencias de uma rodovia agrupadas por estado.
-     */
+     * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes, filtrado por ano
+    */
     List<OcorrenciaAgrupamentoVO> find(Integer ano);
-
     /**
-     * Retorna quantidade de ocorrencias de uma rodovia e de um estado agrupadas por municipio.
+     * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes, filtrado por ano/mes
      */
     List<OcorrenciaAgrupamentoVO> find(Integer ano, Integer mes);
-
+    /**
+     * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes, filtrado por estado
+     */
+    List<OcorrenciaAgrupamentoVO> find(String estado);
+    /**
+     * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes, filtrado por estado/rodovia
+     */
+    List<OcorrenciaAgrupamentoVO> find(String estado, String rodovia);
 }

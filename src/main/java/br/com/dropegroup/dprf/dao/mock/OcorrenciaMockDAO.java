@@ -8,7 +8,9 @@ package br.com.dropegroup.dprf.dao.mock;
 import br.com.dropegroup.dprf.dao.OcorrenciaDAO;
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -32,16 +34,17 @@ public class OcorrenciaMockDAO implements OcorrenciaDAO {
 
     public OcorrenciaMockDAO() {
         // dados de teste
+        Random r = new Random();
         oaVoList = new ArrayList<OcorrenciaAgrupamentoVO>();
-        oaVoList.add(buildVO("BR-116", "SP", 2010, 1, 1.0));
-        oaVoList.add(buildVO("BR-116", "SP", 2010, 1, 2.0));
-        oaVoList.add(buildVO("BR-116", "SP", 2010, 2, 3.0));
-        oaVoList.add(buildVO("BR-116", "SP", 2011, 3, 4.0));
-        oaVoList.add(buildVO("BR-116", "SP", 2011, 4, 5.0));
-        oaVoList.add(buildVO("BR-116", "RJ", 2011, 1, 6.0));
-        oaVoList.add(buildVO("BR-116", "RJ", 2011, 1, 7.0));
-        oaVoList.add(buildVO("BR-116", "RJ", 2011, 2, 8.0));
-        oaVoList.add(buildVO("BR-116", "RJ", 2012, 3, 9.0));
+        for (String rodovia : Arrays.asList("BR-110", "BR-116")) {
+            for (String estado : Arrays.asList("SP", "RJ", "MG", "ES", "PR", "SC", "RS")) {
+                for (int ano = 2007; ano <= 2013; ano++) {
+                    for (int mes = 1; mes <= 12; mes++) {
+                        oaVoList.add(buildVO(rodovia, estado, ano, mes, r.nextDouble()));
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -75,4 +78,25 @@ public class OcorrenciaMockDAO implements OcorrenciaDAO {
         return result;
     }
 
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado) {
+        List<OcorrenciaAgrupamentoVO> result = new ArrayList<OcorrenciaAgrupamentoVO>();
+        for (OcorrenciaAgrupamentoVO x : oaVoList) {
+            if (estado.equals(x.getEstado())) {
+                result.add(x);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado, String rodovia) {
+        List<OcorrenciaAgrupamentoVO> result = new ArrayList<OcorrenciaAgrupamentoVO>();
+        for (OcorrenciaAgrupamentoVO x : oaVoList) {
+            if (estado.equals(x.getEstado()) && rodovia.equals(x.getRodovia())) {
+                result.add(x);
+            }
+        }
+        return result;
+    }    
 }

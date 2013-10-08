@@ -17,4 +17,6 @@ public interface OcorrenciaComponent {
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia();
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano);
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano, Integer mes);
+    List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado);
+    List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado, String rodovia);
 }

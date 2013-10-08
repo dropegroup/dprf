@@ -50,4 +50,13 @@ public class OcorrenciaDAOImpl implements OcorrenciaDAO {
         throw new UnsupportedOperationException("Ainda nao implementado!!!");
     }
 
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado) {
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
+    }
+
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado, String rodovia) {
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
+    }
 }

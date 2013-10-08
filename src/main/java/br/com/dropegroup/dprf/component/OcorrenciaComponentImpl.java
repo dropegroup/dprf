@@ -36,4 +36,13 @@ public class OcorrenciaComponentImpl implements OcorrenciaComponent {
     public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano, Integer mes) {
         return ocorrenciaDAO.find(ano, mes);
     }
-}
+
+    @Override
+    public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado) {
+        return ocorrenciaDAO.find(estado);
+    }
+
+    @Override
+    public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado, String rodovia) {
+        return ocorrenciaDAO.find(estado, rodovia);
+    }}

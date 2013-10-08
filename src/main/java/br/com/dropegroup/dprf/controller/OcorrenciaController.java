@@ -62,5 +62,32 @@ public class OcorrenciaController {
             @PathVariable(value="mes") Integer mes) {
         return ocorrenciaComponent.buscaRankingRodovia(ano, mes);
     }
+
+    /**
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado, em formato JSON
+     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * @param ano
+     * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
+     */
+    @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasEstadoRodoviaAsJSON(
+            @PathVariable(value="estado") String estado) {
+        return ocorrenciaComponent.buscaRankingRodovia(estado);
+    }
+    
+    /**
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado e rodovia, em formato JSON
+     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * @param ano
+     * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
+     */
+    @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}/{rodovia}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasEstadoRodoviaAsJSON(
+            @PathVariable(value="estado") String estado,
+            @PathVariable(value="rodovia") String rodovia) {
+        return ocorrenciaComponent.buscaRankingRodovia(estado, rodovia);
+    }
     
 }
