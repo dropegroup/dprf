@@ -10,6 +10,7 @@ target/
 # netbeans
 nb-configuration.xml
 nbactions.xml
+catalog.xml
 
 #eclipse
 .classpath
