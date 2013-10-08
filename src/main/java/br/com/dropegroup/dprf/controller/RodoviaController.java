@@ -32,25 +32,4 @@ public class RodoviaController {
         return rodoviaComponent.findByCode(id);
     }
 
-    /**
-     * Retorna a quantidade de acidentes de todas as rodovias no acumulado de todos os anos.<BR>
-     * Exemplo: BR-116,2000; BR-110,1200, ...
-     */
-    @RequestMapping(value = "/rodovias/ranking", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasAsJSON() {
-        return rodoviaComponent.ranking();
-    }
-
-    /**
-     * /rodovias//ranking/2011<BR>
-     * retorna a quatidade de acidentes de todas as rodovias no acumulado do ano <BR>
-     * Exemplo: BR-11-16,240; BR-11,234; ...
-     */
-    @RequestMapping(value = "/rodovias/ranking/{ano}", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public List<OcorrenciaAgrupamentoVO> getRankingRodoviasAnoAsJSON(@PathVariable Integer ano) {
-        return rodoviaComponent.ranking(ano);
-    }
-
 }
