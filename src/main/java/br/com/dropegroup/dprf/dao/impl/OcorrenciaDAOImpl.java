@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 import br.com.dropegroup.dprf.dao.OcorrenciaDAO;
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 
-@Repository
+// RETIRAR O COMENTARIO DA LINHA ABAIXO AO SUBSTITUIR O MOCK
+// COMENTAR A ANOTACAO CORRESPONDENTE NO OCORRENCIAMOCKDAO
+// @Repository
 public class OcorrenciaDAOImpl implements OcorrenciaDAO {
 
     @PersistenceContext
@@ -28,9 +30,11 @@ public class OcorrenciaDAOImpl implements OcorrenciaDAO {
 
         ArrayList<OcorrenciaAgrupamentoVO> agrupamento = new ArrayList<OcorrenciaAgrupamentoVO>();
         for (Object[] resultElement : result) {
-            Long ocorrencias = (Long) resultElement[1];
-
-            agrupamento.add(new OcorrenciaAgrupamentoVO("" + resultElement[0], ocorrencias.intValue()));
+            OcorrenciaAgrupamentoVO oa = new OcorrenciaAgrupamentoVO();
+            // PRECISA REVER ESTA SEQUENCIA E/OU MUDAR A QUERY ACIMA
+            oa.setRodovia((String)resultElement[0]);
+            oa.setIndice((Double)resultElement[1]);
+            agrupamento.add(oa);
         }
 
         return agrupamento;
@@ -38,12 +42,21 @@ public class OcorrenciaDAOImpl implements OcorrenciaDAO {
 
     @Override
     public List<OcorrenciaAgrupamentoVO> find(Integer rodovia) {
-        return Collections.emptyList();
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
     }
 
     @Override
-    public List<OcorrenciaAgrupamentoVO> find(Integer rodovia, String estado) {
-        return Collections.emptyList();
+    public List<OcorrenciaAgrupamentoVO> find(Integer rodovia, Integer mes) {
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
     }
 
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado) {
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
+    }
+
+    @Override
+    public List<OcorrenciaAgrupamentoVO> find(String estado, String rodovia) {
+        throw new UnsupportedOperationException("Ainda nao implementado!!!");
+    }
 }

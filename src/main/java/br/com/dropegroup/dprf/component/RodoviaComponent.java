@@ -12,8 +12,5 @@ public interface RodoviaComponent {
 
     Rodovia findByCode(String code);
 
-    List<OcorrenciaAgrupamentoVO> ranking();
-
-    List<OcorrenciaAgrupamentoVO> ranking(Integer ano);
 
 }
