@@ -7,6 +7,7 @@
 package br.com.dropegroup.dprf.controller;
 
 import br.com.dropegroup.dprf.component.OcorrenciaComponent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * 
  * @author dailton.almeida
  */
 @Service
@@ -28,8 +29,9 @@ public class OcorrenciaController {
     private OcorrenciaComponent ocorrenciaComponent;
 
     /**
-     * Retorna o indice de acidentes de todas as rodovias/estado/ano, em formato JSON
-     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, em formato JSON Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010,
+     * indice: 1.56},{},...,{}]
+     * 
      * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
      */
     @RequestMapping(value = "/ocorrencias/ranking", method = RequestMethod.GET, produces = "application/json")
@@ -43,8 +45,9 @@ public class OcorrenciaController {
     }
 
     /**
-     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por ano, em formato JSON
-     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por ano, em formato JSON Exemplo: [{rodovia: "BR-999",
+     * estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * 
      * @param ano
      * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
      */
@@ -59,16 +62,15 @@ public class OcorrenciaController {
     }
 
     /**
-     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por ano e mes, em formato JSON
-     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por ano e mes, em formato JSON Exemplo: [{rodovia: "BR-999",
+     * estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * 
      * @param ano
      * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
      */
     @RequestMapping(value = "/ocorrencias/ranking/{ano}/{mes}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ResponseEntity getRankingRodoviasAnoAsJSON(
-            @PathVariable(value="ano") Integer ano,
-            @PathVariable(value="mes") Integer mes) {
+    public ResponseEntity getRankingRodoviasAnoAsJSON(@PathVariable(value = "ano") Integer ano, @PathVariable(value = "mes") Integer mes) {
         try {
             return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(ano, mes));
         } catch (Exception e) {
@@ -77,38 +79,77 @@ public class OcorrenciaController {
     }
 
     /**
-     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado, em formato JSON
-     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado, em formato JSON Exemplo: [{rodovia: "BR-999",
+     * estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * 
      * @param ano
      * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
      */
     @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(
-            @PathVariable(value="estado") String estado) {
+    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(@PathVariable(value = "estado") String estado) {
         try {
             return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(estado));
         } catch (Exception e) {
             return controllerUtils.toResponseEntity(e);
         }
     }
-    
+
     /**
-     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado e rodovia, em formato JSON
-     * Exemplo: [{rodovia: "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * Retorna o indice de acidentes de todas as rodovias/estado/ano, filtrado por estado e rodovia, em formato JSON Exemplo: [{rodovia:
+     * "BR-999", estado: "SP", ano: 2010, indice: 1.56},{},...,{}]
+     * 
      * @param ano
      * @return Lista de objetos da classe OcorrenciaAgrupamentoVO, com alvo para ser convertida para JSON
      */
     @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}/{rodovia}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(
-            @PathVariable(value="estado") String estado,
-            @PathVariable(value="rodovia") String rodovia) {
+    public ResponseEntity getRankingRodoviasEstadoRodoviaAsJSON(@PathVariable(value = "estado") String estado,
+            @PathVariable(value = "rodovia") String rodovia) {
         try {
             return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingRodovia(estado, rodovia));
         } catch (Exception e) {
             return controllerUtils.toResponseEntity(e);
         }
     }
-    
+
+    @SuppressWarnings("rawtypes")
+    @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}/cidade/{cidade}/ano/{ano}/mes/{mes}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity getRankingOcorrenciasEstadoCidadeAsJSON(@PathVariable(value = "estado") String estado,
+            @PathVariable(value = "cidade") String cidade, @PathVariable(value = "ano") Integer ano,
+            @PathVariable(value = "mes") Integer mes) {
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingOcorrencias(ano, mes, estado, cidade));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return controllerUtils.toResponseEntity(e);
+        }
+    }
+
+    @SuppressWarnings("rawtypes")
+    @RequestMapping(value = "/ocorrencias/ranking/estado/{estado}/ano/{ano}/mes/{mes}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity getRankingOcorrenciasEstadosAsJSON(@PathVariable(value = "estado") String estado,
+            @PathVariable(value = "ano") Integer ano, @PathVariable(value = "mes") Integer mes) {
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingOcorrencias(ano, mes, estado));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return controllerUtils.toResponseEntity(e);
+        }
+    }
+
+    @SuppressWarnings("rawtypes")
+    @RequestMapping(value = "/ocorrencias/ranking/ano/{ano}/mes/{mes}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity getRankingOcorrenciasAsJSON(@PathVariable(value = "ano") Integer ano, @PathVariable(value = "mes") Integer mes) {
+        try {
+            return controllerUtils.toResponseEntity(ocorrenciaComponent.buscaRankingOcorrencias(ano, mes));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return controllerUtils.toResponseEntity(e);
+        }
+    }
+
 }

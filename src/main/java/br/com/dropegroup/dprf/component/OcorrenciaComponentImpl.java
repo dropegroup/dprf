@@ -6,14 +6,17 @@
 
 package br.com.dropegroup.dprf.component;
 
-import br.com.dropegroup.dprf.dao.OcorrenciaDAO;
-import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.dropegroup.dprf.dao.OcorrenciaDAO;
+import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
+import br.com.dropegroup.dprf.resource.OcorrenciaLocalVO;
+
 /**
- *
+ * 
  * @author dailton.almeida
  */
 @Component
@@ -45,4 +48,20 @@ public class OcorrenciaComponentImpl implements OcorrenciaComponent {
     @Override
     public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado, String rodovia) {
         return ocorrenciaDAO.find(estado, rodovia);
-    }}
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes, String estado, String cidade) {
+        return ocorrenciaDAO.find(ano, mes, estado, cidade);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes, String estado) {
+        return ocorrenciaDAO.find(ano, mes, estado, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes) {
+        return ocorrenciaDAO.find(ano, mes, null, null);
+    }
+}

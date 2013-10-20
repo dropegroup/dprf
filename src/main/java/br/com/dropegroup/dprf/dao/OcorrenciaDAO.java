@@ -3,6 +3,7 @@ package br.com.dropegroup.dprf.dao;
 import java.util.List;
 
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
+import br.com.dropegroup.dprf.resource.OcorrenciaLocalVO;
 
 public interface OcorrenciaDAO {
     /**
@@ -25,4 +26,6 @@ public interface OcorrenciaDAO {
      * Retorna indice de ocorrencias agrupada rodovia/estado/ano/mes, filtrado por estado/rodovia
      */
     List<OcorrenciaAgrupamentoVO> find(String estado, String rodovia);
+    
+    List<OcorrenciaLocalVO> find (Integer ano, Integer mes, String estado, String cidade);
 }

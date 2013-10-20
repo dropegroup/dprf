@@ -7,17 +7,16 @@ package br.com.dropegroup.dprf.dao.mock;
 
 import br.com.dropegroup.dprf.dao.OcorrenciaDAO;
 import br.com.dropegroup.dprf.resource.OcorrenciaAgrupamentoVO;
+import br.com.dropegroup.dprf.resource.OcorrenciaLocalVO;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author dailton.almeida
- */
-@Repository
+//@Repository
 public class OcorrenciaMockDAO implements OcorrenciaDAO {
 
     private List<OcorrenciaAgrupamentoVO> oaVoList;
@@ -97,6 +96,12 @@ public class OcorrenciaMockDAO implements OcorrenciaDAO {
                 result.add(x);
             }
         }
+        return result;
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> find(Integer ano, Integer mes, String estado, String cidade) {
+        List<OcorrenciaLocalVO> result = new ArrayList<OcorrenciaLocalVO>();
         return result;
     }    
 }
