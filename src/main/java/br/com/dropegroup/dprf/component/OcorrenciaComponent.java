@@ -11,7 +11,19 @@ public interface OcorrenciaComponent {
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano, Integer mes);
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado);
     List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado, String rodovia);
+    
     List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes, String estado, String cidade);
+    
     List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes, String estado);
-    List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes);
+
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstadoAno(String estado, Integer ano);
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstadoMes(String estado, Integer mes);
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasAnoMes(Integer ano, Integer mes);
+
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasMes(Integer mes);
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasAno(Integer ano);
+    List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstado(String estado);
+
+    List<OcorrenciaLocalVO> buscaRankingOcorrencias();
+    
 }

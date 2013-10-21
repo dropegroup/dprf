@@ -36,11 +36,6 @@ public class OcorrenciaComponentImpl implements OcorrenciaComponent {
     }
 
     @Override
-    public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano, Integer mes) {
-        return ocorrenciaDAO.find(ano, mes);
-    }
-
-    @Override
     public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(String estado) {
         return ocorrenciaDAO.find(estado);
     }
@@ -60,8 +55,46 @@ public class OcorrenciaComponentImpl implements OcorrenciaComponent {
         return ocorrenciaDAO.find(ano, mes, estado, null);
     }
 
+    
+    
+    
     @Override
-    public List<OcorrenciaLocalVO> buscaRankingOcorrencias(Integer ano, Integer mes) {
+    public List<OcorrenciaAgrupamentoVO> buscaRankingRodovia(Integer ano, Integer mes) {
+        return ocorrenciaDAO.find(ano, mes);
+    }    
+    
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstadoAno(String estado, Integer ano) {
+        return ocorrenciaDAO.find(ano, null, estado, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstadoMes(String estado, Integer mes) {
+        return ocorrenciaDAO.find(null, mes, estado, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasAnoMes(Integer ano, Integer mes) {
         return ocorrenciaDAO.find(ano, mes, null, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasMes(Integer mes) {
+        return ocorrenciaDAO.find(null, mes, null, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasAno(Integer ano) {
+        return ocorrenciaDAO.find(ano, null, null, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrenciasEstado(String estado) {
+        return ocorrenciaDAO.find(null, null, estado, null);
+    }
+
+    @Override
+    public List<OcorrenciaLocalVO> buscaRankingOcorrencias() {
+        return ocorrenciaDAO.find(null, null, null, null);
     }
 }

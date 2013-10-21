@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.dropegroup.dprf.controller;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Dailton
- */
 @Service
 public class ControllerUtils {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public ResponseEntity toResponseEntity(Object body) {
-        return new ResponseEntity(body, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        return new ResponseEntity(body, headers, HttpStatus.OK);
     }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public ResponseEntity toResponseEntity(Exception e) {
         return new ResponseEntity(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }

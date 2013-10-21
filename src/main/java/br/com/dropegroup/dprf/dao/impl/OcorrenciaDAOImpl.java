@@ -85,6 +85,7 @@ public class OcorrenciaDAOImpl implements OcorrenciaDAO {
         System.out.println("QueryString: "+sb.toString());
 
         Query query = entityManager.createQuery(queryString);
+        query.setMaxResults(400);
         @SuppressWarnings("unchecked")
         List<Object[]> result = query.getResultList();
 
