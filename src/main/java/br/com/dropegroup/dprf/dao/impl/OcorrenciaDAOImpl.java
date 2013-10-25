@@ -79,13 +79,14 @@ public class OcorrenciaDAOImpl implements OcorrenciaDAO {
         if (cidade != null) {
             sb.append("  and o.id.cidade='" + cidade.toUpperCase() + "'");
         }
-        sb.append("  group by o.id.uf, o.id.cidade ");
+        sb.append("  group by o.id.uf, o.id.cidade order by sum(o.qtd) desc");
         String queryString = sb.toString();
         
         System.out.println("QueryString: "+sb.toString());
 
         Query query = entityManager.createQuery(queryString);
         query.setMaxResults(400);
+        
         @SuppressWarnings("unchecked")
         List<Object[]> result = query.getResultList();
 
